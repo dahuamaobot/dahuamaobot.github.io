@@ -1,0 +1,236 @@
+:root {
+  --blue: #215e99;
+  --muted: #777;
+  --rule: #bfbfbf;
+  --maxw: 900px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 20px 48px;
+  line-height: 1.2;
+  color: #111;
+  background: #fff;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* header */
+.top {
+  position: relative;
+  padding-right: 180px; /* Reserve space for photo */
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  transform: translateY(-10px); /* Move up a little */
+  text-align: center;
+}
+
+.meta,
+.meta2 {
+  margin: 2px 0;
+  font-size: 15px;
+}
+
+.sep {
+  color: #999;
+  padding: 0 6px;
+}
+
+.photo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+/* sections */
+.section {
+  margin-top: 10px;
+}
+
+.section-title {
+  margin: 0;
+  padding: 0;
+  color: var(--blue);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+.rule {
+  border: 0;
+  height: 1px;
+  background: var(--rule);
+  margin: 6px 0 12px;
+}
+
+/* entry header: 3 columns */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 6px 0 4px;
+}
+
+.row > .org {
+  text-align: left;  /* 左对齐 */
+}
+
+.row > .role {
+  text-align: center;  /* 居中对齐 */
+}
+
+.row > .when {
+  text-align: right;  /* 右对齐 */
+}
+
+
+.row .org {
+  font-weight: 700; /* School in bold */
+  font-size: 1.1em;
+}
+
+.row .role {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.row .when {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.desc {
+  margin: 0 0 8px;
+}
+
+ul {
+  margin: 8px 0 0 18px;
+}
+
+@media (max-width: 720px) {
+  .top {
+    padding-right: 0;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .when {
+    white-space: normal;
+  }
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Web view: Increase font size for paragraphs */
+body p {
+  font-size: 1.2em;  /* 增加网页渲染中的段落字体大小 */
+}
+
+body li {
+  font-size: 1.2em;  /* 增加网页渲染中的列表项字体大小 */
+}
+
+/* Print optimization */
+@media print {
+  /* Page margin */
+  @page { 
+    margin: 1.2cm; 
+  }
+
+  .photo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 105px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+  /* Global line-height 15pt, font-size 10.5pt */
+  body { 
+    line-height: 15pt; 
+    font-size: 10.5pt !important; /* 强制使用打印时的字体大小 */
+  }
+
+  /* Heading sizes */
+  h1 { 
+    font-size: 16pt !important; 
+    line-height: 1.2; 
+    margin: 0 0 2mm; 
+  }
+
+  h2 { 
+    font-size: 12pt !important; 
+    line-height: 1.2; 
+    margin: 0 0 1.5mm; 
+  }
+
+  h3 { 
+    font-size: 12pt !important; 
+    line-height: 1.2; 
+    margin: 0 0 1.5mm; 
+  }
+
+  /* Explicitly force font-size for paragraphs and list items in print */
+  p, li { 
+    font-size: 10.5pt !important; /* 强制在打印时使用指定的字体大小 */
+    margin: 0;
+  }
+
+  /* Education section with three columns */
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* School, Major, Date */
+    column-gap: 6mm;
+    align-items: baseline;  /* Align items based on the baseline */
+    margin: 0;  /* Control row spacing through .desc */
+  }
+
+  .org  { font-weight: 600; }
+  .role { text-align: left; white-space: nowrap; }  /* Prevent line breaks */
+  .when { text-align: right; white-space: nowrap; }
+
+  /* Margin after rows */
+  .desc { margin: 1mm 0 0; }
+
+  /* Section title and rule line styling */
+  .section-title { margin: 0 0 1.3mm; }
+  .rule { 
+    height: 0.2mm; 
+    background: #000; 
+    margin: 1.2mm 0; 
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+  }
+
+  /* List padding for publications */
+  ul, ol { margin: 0; padding-left: 5mm; }
+}
